@@ -1,0 +1,3 @@
+class GoodReadsBooks::Book
+  #
+end
