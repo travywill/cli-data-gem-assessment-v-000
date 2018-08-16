@@ -6,6 +6,7 @@ class GoodReadsBooks::CLI
     puts "Welcome to the GoodReads Book Finder!"
     list_books
     menu
+    goodbye
   end
 
   def list_books
@@ -17,8 +18,12 @@ class GoodReadsBooks::CLI
 
   def menu
     puts "Would you like more information about one of these books? (y/n)"
-    input = gets.strip
-    input
+    #input = gets.strip
+    #input
+  end
+
+  def goodbye
+    puts "Thanks for using the GoodReads Book Finder!"
   end
 
 end
