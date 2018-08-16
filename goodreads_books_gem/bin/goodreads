@@ -1,3 +1,5 @@
 #!/usr/bin/env ruby
 
-GoodReads::CLI.new.call
+require './lib/goodreads_books'
+
+GoodReadsBooks::CLI.new.call
