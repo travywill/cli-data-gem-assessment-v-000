@@ -1,5 +1,11 @@
 #!/usr/bin/env ruby
 
-require './lib/goodreads_books'
+# To run this file, make sure to change directories into goodreads_books_gem first
+# then type ./bin/goodreads
+
+#require "bundler/setup"
+#require "goodreads_books"
+
+require './lib/goodreads_books' # Replace this with the two lines of text above eventually?
 
 GoodReadsBooks::CLI.new.call
