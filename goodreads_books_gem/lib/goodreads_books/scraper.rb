@@ -1,0 +1,3 @@
+class GoodReadsBooks::Scraper
+  #
+end
