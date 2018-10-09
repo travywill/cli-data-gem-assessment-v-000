@@ -6,6 +6,9 @@ class GoodReadsBooks::CLI
     puts "Welcome to the GoodReads Book Finder!"
     list_books
     menu
+    scraper = GoodReadsBooks::Scraper.new
+    scraper.scrape_search_results("www.goodreads.com")
+    binding.pry
     goodbye
   end
 
