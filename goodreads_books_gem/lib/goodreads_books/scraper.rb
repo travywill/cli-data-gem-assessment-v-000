@@ -16,7 +16,8 @@ class Scraper #GoodReadsBooks::Scraper
 
     #html = open("https://www.goodreads.com/search?utf8=%E2%9C%93&query=sacred+games")
     #html = open("https://www.goodreads.com/search?utf8=%E2%9C%93&query=american+gods")
-    html = open("https://www.goodreads.com/search?utf8=%E2%9C%93&query=american+gods")
+    html = open("https://www.goodreads.com/search?page=2&query=american+gods&tab=books&utf8=%E2%9C%93")
+    #html = open("")
     doc = Nokogiri::HTML(html)#(search_results_url))
 
     #table = doc.at('table')
