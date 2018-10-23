@@ -23,12 +23,14 @@ class Scraper #GoodReadsBooks::Scraper
       book = []
       book_authors = []
       book_title = tr.search(".bookTitle span").text
+      book_url = tr.css("a.bookTitle @href").text
       tr.search(".authorName span").each do |author|
         book_author = author.text
         book_authors << book_author
       end
       book << book_title
       book << book_authors
+      book << book_url
       books << book
     end
 
