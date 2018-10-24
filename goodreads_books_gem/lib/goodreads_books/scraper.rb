@@ -32,12 +32,12 @@ class Scraper
 
   binding.pry
 
-  def self.scrape_book_profile_page(profile_url)
-    books_profile_hash = {}
+  def scrape_book_profile_page#(profile_url)
+    books_profile_details = []
 
-    #html = open(profile_url)
+    html = open("https://www.goodreads.com/book/show/40090.Sacred_Games?from_search=true")#(profile_url)
     doc = Nokogiri::HTML(open(profile_url))
 
-    return books_profile_hash
+    return books_profile_details = []
   end
 end
