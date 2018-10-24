@@ -36,7 +36,7 @@ class Scraper
     books_profile_details = []
 
     html = open("https://www.goodreads.com/book/show/40090.Sacred_Games?from_search=true")#(profile_url)
-    doc = Nokogiri::HTML(open(profile_url))
+    doc = Nokogiri::HTML(html)#(profile_url))
 
     return books_profile_details
   end
