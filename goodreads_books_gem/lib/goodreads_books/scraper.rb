@@ -30,8 +30,6 @@ class Scraper
     return books
   end
 
-  binding.pry
-
   def scrape_book_profile_page#(profile_url)
     books_profile_details = []
 
@@ -40,4 +38,6 @@ class Scraper
 
     return books_profile_details
   end
+
+  binding.pry
 end
