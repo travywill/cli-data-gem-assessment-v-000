@@ -1,12 +1,21 @@
 # CLI Controller
 
-class GoodReadsBooks::CLI
+require 'nokogiri'
+require 'open-uri'
+require 'pry'
+
+#require_relative "./goodreads_books/version"
+require_relative '../goodreads_books/cli.rb'
+require_relative '../goodreads_books/book.rb'
+require_relative '../goodreads_books/scraper.rb'
+
+class CLI #GoodReadsBooks::CLI
 
   def call
     puts "Welcome to the GoodReads Book Finder!"
     list_books
     menu
-    scraper = GoodReadsBooks::Scraper.new
+    scraper = Scraper.new #GoodReadsBooks::Scraper.new
     scraper.scrape_search_results("www.goodreads.com")
     binding.pry
     goodbye

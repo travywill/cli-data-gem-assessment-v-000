@@ -2,6 +2,11 @@ require 'nokogiri'
 require 'open-uri'
 require 'pry'
 
+#require_relative "./goodreads_books/version"
+require_relative '../goodreads_books/cli.rb'
+require_relative '../goodreads_books/book.rb'
+require_relative '../goodreads_books/scraper.rb'
+
 class Scraper #GoodReadsBooks::Scraper
 
   def scrape_search_results#(search_results_url)
@@ -23,22 +28,22 @@ class Scraper #GoodReadsBooks::Scraper
 
     table = doc.at(".tableList")
     table.search('tr').each do |tr|
-      book = []
-      #book_hash = {}
+      #book = []
+      book_hash = {}
       book_authors = []
       book_title = tr.search(".bookTitle span").text
-      #book_url = tr.css("a.bookTitle @href").text
+      book_url = tr.css("a.bookTitle @href").text
       tr.search(".authorName span").each do |author|
         book_author = author.text
         book_authors << book_author
       end
-      book << book_title
-      book << book_authors
+      #book << book_title
+      #book << book_authors
       #book << book_url
-      #book_hash[:title] = book_title
-      #book_hash[:authors] = book_authors
-      #book_hash[:profile_url] = book_url
-      #book = GoodReadsBooks::Book.new(book_hash)
+      book_hash[:title] = book_title
+      book_hash[:authors] = book_authors
+      book_hash[:profile_url] = book_url
+      book = Book.new(book_hash)
       #books << book_hash
       books << book
     end

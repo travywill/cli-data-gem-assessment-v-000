@@ -8,4 +8,4 @@
 
 require './lib/goodreads_books' # Replace this with the two lines of text above eventually?
 
-GoodReadsBooks::CLI.new.call
+CLI.new.call #GoodReadsBooks::CLI.new.call
