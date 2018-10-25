@@ -10,8 +10,15 @@ class Scraper #GoodReadsBooks::Scraper
 
     query = "sacred games"
 
+    query.each do |letter|
+      if letter == " "
+        letter = "+"
+      end
+    end
+
     #html = open("https://www.goodreads.com/search?utf8=%E2%9C%93&query=sacred+games")
-    html = open("https://www.goodreads.com/search?q=sacred+games")
+    #html = open("https://www.goodreads.com/search?q=sacred+games")
+    html = open("https://www.goodreads.com/search?q=#{query}")
     doc = Nokogiri::HTML(html)#(search_results_url))
 
     table = doc.at(".tableList")
