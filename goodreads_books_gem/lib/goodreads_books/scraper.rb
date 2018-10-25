@@ -2,7 +2,7 @@ require 'nokogiri'
 require 'open-uri'
 require 'pry'
 
-class Scraper
+class Scraper #GoodReadsBooks::Scraper
 
   def scrape_search_results#(search_results_url)
 
@@ -13,7 +13,7 @@ class Scraper
 
     table = doc.at(".tableList")
     table.search('tr').each do |tr|
-      book = []
+      book_hash = {}
       book_authors = []
       book_title = tr.search(".bookTitle span").text
       book_url = tr.css("a.bookTitle @href").text
@@ -21,10 +21,12 @@ class Scraper
         book_author = author.text
         book_authors << book_author
       end
-      book << book_title
-      book << book_authors
-      book << book_url
-      books << book
+      book_hash[:title] = book_title
+      book_hash[:authors] = book_authors
+      book_hash[:profile_url] = book_url
+      #book = GoodReadsBooks::Book.new(book_hash)
+      books << book_hash
+      #books << book
     end
 
     return books
