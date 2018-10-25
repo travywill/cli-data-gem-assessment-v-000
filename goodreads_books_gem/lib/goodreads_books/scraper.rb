@@ -49,7 +49,10 @@ class Scraper #GoodReadsBooks::Scraper
   def scrape_book_profile_page#(profile_url)
     books_profile_details = []
 
-    html = open("https://www.goodreads.com/book/show/40090.Sacred_Games?from_search=true")#(profile_url)
+    profile_url = "/book/show/40090.Sacred_Games?from_search=true"
+
+    #html = open("https://www.goodreads.com/book/show/40090.Sacred_Games?from_search=true")#(profile_url)
+    html = open("https://www.goodreads.com#{profile_url}")
     doc = Nokogiri::HTML(html)#(profile_url))
 
     summary = doc.css(".readable.stacked span").text
