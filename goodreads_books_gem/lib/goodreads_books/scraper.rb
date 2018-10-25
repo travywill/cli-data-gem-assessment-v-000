@@ -10,7 +10,7 @@ class Scraper #GoodReadsBooks::Scraper
 
     query = "sacred games"
 
-    query.each do |letter|
+    query.each_char do |letter|
       if letter == " "
         letter = "+"
       end
