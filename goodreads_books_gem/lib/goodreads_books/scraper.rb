@@ -8,12 +8,16 @@ class Scraper #GoodReadsBooks::Scraper
 
     books = []
 
-    html = open("https://www.goodreads.com/search?utf8=%E2%9C%93&query=sacred+games")
+    query = "sacred games"
+
+    #html = open("https://www.goodreads.com/search?utf8=%E2%9C%93&query=sacred+games")
+    html = open("https://www.goodreads.com/search?q=sacred+games")
     doc = Nokogiri::HTML(html)#(search_results_url))
 
     table = doc.at(".tableList")
     table.search('tr').each do |tr|
-      book_hash = {}
+      book = []
+      #book_hash = {}
       book_authors = []
       book_title = tr.search(".bookTitle span").text
       book_url = tr.css("a.bookTitle @href").text
@@ -21,12 +25,15 @@ class Scraper #GoodReadsBooks::Scraper
         book_author = author.text
         book_authors << book_author
       end
-      book_hash[:title] = book_title
-      book_hash[:authors] = book_authors
-      book_hash[:profile_url] = book_url
+      book << book_title
+      book << book_authors
+      book << book_url
+      #book_hash[:title] = book_title
+      #book_hash[:authors] = book_authors
+      #book_hash[:profile_url] = book_url
       #book = GoodReadsBooks::Book.new(book_hash)
-      books << book_hash
-      #books << book
+      #books << book_hash
+      books << book
     end
 
     return books
