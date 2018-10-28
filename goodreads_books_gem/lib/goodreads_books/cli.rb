@@ -18,7 +18,11 @@ class CLI #GoodReadsBooks::CLI
     scraper = Scraper.new #GoodReadsBooks::Scraper.new
     book_list = scraper.scrape_search_results#("www.goodreads.com")
     book_list.each do |book|
-      puts "#{book.title} by #{book.authors}"
+      if book.authors.length == 1
+        puts "#{book.title} by #{book.authors[0]}"
+      else
+        puts "#{book.title} by #{book.authors[0]} and #{book.authors[1]}"
+      end
     end
     #binding.pry
     goodbye
