@@ -9,11 +9,12 @@ require_relative '../goodreads_books/scraper.rb'
 
 class Scraper #GoodReadsBooks::Scraper
 
-  def scrape_search_results#(search_results_url)
+  def scrape_search_results(search_terms)
 
     books = []
 
-    query = "sacred games"
+    #query = "sacred games"
+    query = search_terms
 
     query.each_char do |letter|
       if letter == " "
