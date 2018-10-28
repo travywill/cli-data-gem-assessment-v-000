@@ -64,6 +64,10 @@ class CLI #GoodReadsBooks::CLI
     end
   end
 
+  def show_summary
+    #
+  end
+
   def goodbye
     puts "Thanks for using the GoodReads Book Finder!"
   end
