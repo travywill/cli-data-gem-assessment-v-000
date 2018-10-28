@@ -26,11 +26,11 @@ class CLI #GoodReadsBooks::CLI
   def list_books
     scraper = Scraper.new #GoodReadsBooks::Scraper.new
     book_list = scraper.scrape_search_results#("www.goodreads.com")
-    book_list.each do |book|
+    book_list.each_with_index do |book, index|
       if book.authors.length == 1
-        puts "#{book.title} by #{book.authors[0]}"
+        puts "#{index + 1}. #{book.title} by #{book.authors[0]}"
       else
-        puts "#{book.title} by #{book.authors[0]} and #{book.authors[1]}"
+        puts "#{index + 1}. #{book.title} by #{book.authors[0]} and #{book.authors[1]}"
       end
     end
   end
