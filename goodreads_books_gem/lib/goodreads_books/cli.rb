@@ -45,8 +45,8 @@ class CLI #GoodReadsBooks::CLI
   def list_books(search_terms)
     query = search_terms
     scraper = Scraper.new #GoodReadsBooks::Scraper.new
-    book_list = scraper.scrape_search_results(query)
-    book_list.each_with_index do |book, index|
+    @book_list = scraper.scrape_search_results(query)
+    @book_list.each_with_index do |book, index|
       if book.authors.length == 1
         puts "#{index + 1}. #{book.title} by #{book.authors[0]}"
       elsif book.authors.length == 2
