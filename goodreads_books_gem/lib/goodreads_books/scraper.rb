@@ -43,9 +43,9 @@ class Scraper #GoodReadsBooks::Scraper
       book_hash[:title] = book_title
       book_hash[:authors] = book_authors
       book_hash[:profile_url] = book_url
-      #book = Book.new(book_hash)
-      books << book_hash
-      #books << book
+      book = Book.new(book_hash)
+      #books << book_hash
+      books << book
     end
 
     return books
@@ -67,5 +67,5 @@ class Scraper #GoodReadsBooks::Scraper
     return books_profile_details
   end
 
-  binding.pry
+  #binding.pry
 end

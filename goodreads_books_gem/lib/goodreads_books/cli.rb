@@ -16,8 +16,11 @@ class CLI #GoodReadsBooks::CLI
     list_books
     menu
     scraper = Scraper.new #GoodReadsBooks::Scraper.new
-    scraper.scrape_search_results("www.goodreads.com")
-    binding.pry
+    book_list = scraper.scrape_search_results#("www.goodreads.com")
+    book_list.each do |book|
+      puts "#{book.title} by #{book.authors}"
+    end
+    #binding.pry
     goodbye
   end
 
