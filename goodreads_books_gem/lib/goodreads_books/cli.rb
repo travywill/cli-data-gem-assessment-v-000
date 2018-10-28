@@ -29,8 +29,17 @@ class CLI #GoodReadsBooks::CLI
     book_list.each_with_index do |book, index|
       if book.authors.length == 1
         puts "#{index + 1}. #{book.title} by #{book.authors[0]}"
-      else
+      elsif book.authors.length == 2
         puts "#{index + 1}. #{book.title} by #{book.authors[0]} and #{book.authors[1]}"
+      else
+        authors = ""
+        i = 0
+        while i < book.authors.length - 2
+          authors += "#{book.authors[i]}, "
+          i += 1
+        end
+        authors += "#{book.authors[book.authors.length - 2]} and #{book.authors[book.authors.length - 1]}"
+        puts "#{index + 1}. #{book.title} by #{authors}"
       end
     end
   end
