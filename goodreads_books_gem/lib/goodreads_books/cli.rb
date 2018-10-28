@@ -21,6 +21,27 @@ class CLI #GoodReadsBooks::CLI
     puts ""
   end
 
+  def menu
+    puts "Please enter your key words to search for a book: "
+    query = gets.strip
+    puts ""
+    list_books(query)
+    puts ""
+    puts "Would you like to read a summary of one of these books? (y/n)"
+    input = gets.strip
+    until input == "y" || input == "n"
+      puts "Please answer with y or n: "
+      input = gets.strip
+    end
+    if input == "y"
+      puts ""
+      puts "Summary"
+    elsif input == "n"
+      puts ""
+      puts "No Summary"
+    end
+  end
+
   def list_books(search_terms)
     query = search_terms
     scraper = Scraper.new #GoodReadsBooks::Scraper.new
@@ -41,17 +62,6 @@ class CLI #GoodReadsBooks::CLI
         puts "#{index + 1}. #{book.title} by #{authors}"
       end
     end
-  end
-
-  def menu
-    puts "Please enter your key words to search for a book: "
-    query = gets.strip
-    puts ""
-    list_books(query)
-    puts ""
-    puts "Would you like more information about one of these books? (y/n)"
-    #input = gets.strip
-    #input
   end
 
   def goodbye
