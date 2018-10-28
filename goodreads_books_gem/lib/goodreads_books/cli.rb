@@ -12,9 +12,18 @@ require_relative '../goodreads_books/scraper.rb'
 class CLI #GoodReadsBooks::CLI
 
   def call
+    puts ""
     puts "Welcome to the GoodReads Book Finder!"
-    list_books
+    puts ""
     menu
+    puts ""
+    list_books
+    puts ""
+    goodbye
+    puts ""
+  end
+
+  def list_books
     scraper = Scraper.new #GoodReadsBooks::Scraper.new
     book_list = scraper.scrape_search_results#("www.goodreads.com")
     book_list.each do |book|
@@ -24,15 +33,6 @@ class CLI #GoodReadsBooks::CLI
         puts "#{book.title} by #{book.authors[0]} and #{book.authors[1]}"
       end
     end
-    #binding.pry
-    goodbye
-  end
-
-  def list_books
-    puts <<-DOC
-      1.  Book 1 Title by Book 1 Author
-      2.  Book 2 Title by Book 2 Author
-    DOC
   end
 
   def menu
