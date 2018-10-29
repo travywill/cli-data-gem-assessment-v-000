@@ -2,13 +2,12 @@ require 'nokogiri'
 require 'open-uri'
 require 'pry'
 
-#require_relative "./goodreads_books/version"
 require_relative '../goodreads_books/cli.rb'
 require_relative '../goodreads_books/book.rb'
 require_relative '../goodreads_books/scraper.rb'
 
-class Book #GoodReadsBooks::Book
-  #
+class Book
+  
   attr_accessor :title, :authors, :profile_url, :summary
 
   @@all = []
