@@ -2,12 +2,11 @@ require 'nokogiri'
 require 'open-uri'
 require 'pry'
 
-#require_relative "./goodreads_books/version"
 require_relative '../goodreads_books/cli.rb'
 require_relative '../goodreads_books/book.rb'
 require_relative '../goodreads_books/scraper.rb'
 
-class Scraper #GoodReadsBooks::Scraper
+class Scraper
 
   def scrape_search_results(search_terms)
 
