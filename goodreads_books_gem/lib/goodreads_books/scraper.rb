@@ -27,7 +27,7 @@ class Scraper # This class scrapes information from www.goodreads.com
 
     table = doc.at(".tableList") # The table with the relevant search results information
 
-    table.search('tr').each do |tr| # Searches each row in the table
+    table.search('tr').each do |tr| # Searches each row in the table.  (Each row has info about 1 book)
       book_hash = {} # A hash for gathering book information
       book_authors = [] # An array for gathering the names of multiple authors
       book_title = tr.search(".bookTitle span").text # Gets the book's title
@@ -59,10 +59,10 @@ class Scraper # This class scrapes information from www.goodreads.com
     html = open("https://www.goodreads.com#{profile_url}")
     doc = Nokogiri::HTML(html)
 
-    summary = doc.css(".readable.stacked span").text # Get's the book's summary
+    summary = doc.css(".readable.stacked span").text # Gets the book's summary
 
-    book.summary = summary
+    book.summary = summary # Takes the summary information and adds it to the Book object
 
-    return book.summary
+    return book.summary # Returns the Book object's summary information
   end
 end
