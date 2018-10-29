@@ -6,9 +6,10 @@ require_relative '../goodreads_books/cli.rb'
 require_relative '../goodreads_books/book.rb'
 require_relative '../goodreads_books/scraper.rb'
 
-class Scraper
+class Scraper # This class scrapes information from www.goodreads.com
 
   def scrape_search_results(search_terms)
+    # This method collects an array of Book objects based on information gathered from search results from www.goodreads.com
 
     books = []
 
@@ -24,6 +25,7 @@ class Scraper
     doc = Nokogiri::HTML(html)
 
     table = doc.at(".tableList")
+
     table.search('tr').each do |tr|
       book_hash = {}
       book_authors = []
@@ -33,17 +35,21 @@ class Scraper
         book_author = author.text
         book_authors << book_author
       end
+
       book_hash[:title] = book_title
       book_hash[:authors] = book_authors
       book_hash[:profile_url] = book_url
+
       book = Book.new(book_hash)
       books << book
     end
 
-    return books
+    return books # Returns the array of Book objects
   end
 
   def scrape_book_profile_page(book_url)
+    # This method uses the profile_url information from a Book object to gather the book's summary from that book's webpage on
+    # www.goodreads.com 
 
     profile_url = book_url
 
