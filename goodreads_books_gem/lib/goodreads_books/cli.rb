@@ -35,7 +35,7 @@ class CLI #GoodReadsBooks::CLI
     end
     if input == "y"
       puts ""
-      puts "Summary"
+      show_summary
     elsif input == "n"
       puts ""
       puts "No Summary"
@@ -44,7 +44,7 @@ class CLI #GoodReadsBooks::CLI
 
   def list_books(search_terms)
     query = search_terms
-    scraper = Scraper.new #GoodReadsBooks::Scraper.new
+    @scraper = Scraper.new #GoodReadsBooks::Scraper.new
     @book_list = scraper.scrape_search_results(query)
     @book_list.each_with_index do |book, index|
       if book.authors.length == 1
@@ -65,7 +65,11 @@ class CLI #GoodReadsBooks::CLI
   end
 
   def show_summary
-    #
+    puts "Enter the number of the book for which you would like a summary: "
+    input = gets.strip
+    url = @book_list[input -1].profile_url
+    summary = @scraper.scrape_book_profile_page(url)
+    puts summary
   end
 
   def goodbye
