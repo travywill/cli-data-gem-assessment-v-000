@@ -52,10 +52,12 @@ class Scraper #GoodReadsBooks::Scraper
     return books
   end
 
-  def scrape_book_profile_page#(profile_url)
-    books_profile_details = []
+  def scrape_book_profile_page(book_url)
+    #books_profile_details = []
 
-    profile_url = "/book/show/40090.Sacred_Games?from_search=true"
+    #profile_url = "/book/show/40090.Sacred_Games?from_search=true"
+
+    profile_url = book_url
 
     #html = open("https://www.goodreads.com/book/show/40090.Sacred_Games?from_search=true")#(profile_url)
     html = open("https://www.goodreads.com#{profile_url}")
@@ -63,9 +65,9 @@ class Scraper #GoodReadsBooks::Scraper
 
     summary = doc.css(".readable.stacked span").text
 
-    books_profile_details << summary
+    #books_profile_details << summary
 
-    return books_profile_details
+    return summary #books_profile_details
   end
 
   #binding.pry
