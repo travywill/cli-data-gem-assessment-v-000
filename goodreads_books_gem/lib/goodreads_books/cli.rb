@@ -82,8 +82,9 @@ class CLI
     end
     url = @book_list[input -1].profile_url
     summary = @scraper.scrape_book_profile_page(url)
+    @book_list[input -1].summary = summary
     puts ""
-    puts summary
+    puts @book_list[input -1].summary
     puts ""
     puts "Would you like to read a summary of another one of the books from your search results? (y/n)"
     input = gets.strip
