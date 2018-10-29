@@ -17,8 +17,6 @@ class CLI #GoodReadsBooks::CLI
     puts ""
     menu
     puts ""
-    #goodbye
-    #puts ""
   end
 
   def menu
