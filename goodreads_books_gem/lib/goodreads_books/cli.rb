@@ -38,7 +38,19 @@ class CLI #GoodReadsBooks::CLI
       show_summary
     elsif input == "n"
       puts ""
-      puts "No Summary"
+      puts "Would you like to conduct a new search? (y/n)"
+      input = gets.strip
+      until input == "y" || input == "n"
+        puts "Please answer with y or n: "
+        input = gets.strip
+      end
+      if input == "y"
+        puts ""
+        menu
+      elsif input == "n"
+        puts ""
+        goodbye
+      end
     end
   end
 
@@ -72,6 +84,34 @@ class CLI #GoodReadsBooks::CLI
     summary = @scraper.scrape_book_profile_page(url)
     puts ""
     puts summary
+    puts ""
+    list_books
+    puts ""
+    puts "Would you like to read a summary of another one of these books? (y/n)"
+    input = gets.strip
+    until input == "y" || input == "n"
+      puts "Please answer with y or n: "
+      input = gets.strip
+    end
+    if input == "y"
+      puts ""
+      show_summary
+    elsif input == "n"
+      puts ""
+      puts "Would you like to conduct a new search? (y/n)"
+      input = gets.strip
+      until input == "y" || input == "n"
+        puts "Please answer with y or n: "
+        input = gets.strip
+      end
+      if input == "y"
+        puts ""
+        menu
+      elsif input == "n"
+        puts ""
+        goodbye
+      end
+    end
   end
 
   def goodbye
