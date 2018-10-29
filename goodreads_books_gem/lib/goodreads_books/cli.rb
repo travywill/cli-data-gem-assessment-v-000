@@ -1,15 +1,12 @@
-# CLI Controller
-
 require 'nokogiri'
 require 'open-uri'
 require 'pry'
 
-#require_relative "./goodreads_books/version"
 require_relative '../goodreads_books/cli.rb'
 require_relative '../goodreads_books/book.rb'
 require_relative '../goodreads_books/scraper.rb'
 
-class CLI #GoodReadsBooks::CLI
+class CLI
 
   def call
     puts ""
@@ -54,7 +51,7 @@ class CLI #GoodReadsBooks::CLI
 
   def list_books(search_terms)
     query = search_terms
-    @scraper = Scraper.new #GoodReadsBooks::Scraper.new
+    @scraper = Scraper.new
     @book_list = @scraper.scrape_search_results(query)
     @book_list.each_with_index do |book, index|
       if book.authors.length == 1
