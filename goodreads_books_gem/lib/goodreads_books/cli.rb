@@ -78,6 +78,11 @@ class CLI #GoodReadsBooks::CLI
     puts "Enter the number of the book for which you would like a summary: "
     input = gets.strip
     input = input.to_i
+    until input > 0 && input <= @book_list.length
+      puts "Please answer with a valid number: "
+      input = gets.strip
+      input = input.to_i
+    end
     url = @book_list[input -1].profile_url
     summary = @scraper.scrape_book_profile_page(url)
     puts ""
