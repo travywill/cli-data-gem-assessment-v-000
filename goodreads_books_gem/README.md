@@ -1,8 +1,6 @@
 # GoodreadsBooksGem
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/goodreads_books_gem`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+Welcome to the GoodreadsBooksGem!  This gem provides a basic interface to do simple searches for books on www.goodreads.com and allows you to read summaries of the books in your search results.
 
 ## Installation
 
@@ -22,7 +20,24 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+First, clone the repository from https://github.com/travywill/cli-data-gem-assessment-v-000 by typing this code into your Terminal or IDE:
+
+  git clone https://github.com/travywill/cli-data-gem-assessment-v-000
+
+Then make sure you change into the goodreads_books_gem directory following these steps of code:
+
+  cd cli-data-gem-assessment-v-000
+  cd goodreads_books_gem
+
+Make sure all the dependencies are installed by running this code:
+
+  bin/setup
+
+To run the gem, type this code:
+
+  ruby bin/goodreads
+
+Using the gem is fairly straightforward.  Begin by typing in the key words for your search.  The gem will give you a list of the top search results from www.goodreads.com.  Type in the number of one of the books from your search results to read a summary of it.  Repeat if you would like to read a summary of a different book from your search results.  You will be given the option to do a new search if you would like to do so.  Indicate that you do not want to read a summary of a book and that you do not want to do a new search in order to exit the program.
 
 ## Development
 
