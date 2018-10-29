@@ -17,8 +17,8 @@ class CLI #GoodReadsBooks::CLI
     puts ""
     menu
     puts ""
-    goodbye
-    puts ""
+    #goodbye
+    #puts ""
   end
 
   def menu
@@ -85,15 +85,30 @@ class CLI #GoodReadsBooks::CLI
     puts ""
     puts summary
     puts ""
-    list_books
-    puts ""
-    puts "Would you like to read a summary of another one of these books? (y/n)"
+    puts "Would you like to read a summary of another one of the books from your search results? (y/n)"
     input = gets.strip
     until input == "y" || input == "n"
       puts "Please answer with y or n: "
       input = gets.strip
     end
     if input == "y"
+      puts ""
+      @book_list.each_with_index do |book, index|
+        if book.authors.length == 1
+          puts "#{index + 1}. #{book.title} by #{book.authors[0]}"
+        elsif book.authors.length == 2
+          puts "#{index + 1}. #{book.title} by #{book.authors[0]} and #{book.authors[1]}"
+        else
+          authors = ""
+          i = 0
+          while i < book.authors.length - 2
+            authors += "#{book.authors[i]}, "
+            i += 1
+          end
+          authors += "#{book.authors[book.authors.length - 2]} and #{book.authors[book.authors.length - 1]}"
+          puts "#{index + 1}. #{book.title} by #{authors}"
+        end
+      end
       puts ""
       show_summary
     elsif input == "n"
